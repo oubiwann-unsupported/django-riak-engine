@@ -10,7 +10,8 @@ CLASSIFIERS = [
     'Topic :: Database',
     'Topic :: Software Development :: Libraries :: Python Modules',
     'Operating System :: OS Independent',
-]
+    ]
+
 
 for versions in ['2', '2.4', '2.5', '2.6', '2.7']:
     CLASSIFIERS.append('Programming Language :: Python :: %s' % versions)
@@ -41,5 +42,5 @@ dist.setup(
 
     classifiers=CLASSIFIERS,
     test_suite='django_riak_engine.tests',
-)
+    )
 
