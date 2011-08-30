@@ -1,0 +1,8 @@
+library = "django_riak_engine"
+name = "django-riak-engine"
+author = "Duncan McGreggor"
+author_email = "duncan@bluelibris.com"
+version = "0.1"
+url = "https://github.com/oubiwann/django-riak-engine"
+license = "BSD"
+description = "A Riak (nosql) backend for Django."
