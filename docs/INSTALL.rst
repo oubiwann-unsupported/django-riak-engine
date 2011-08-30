@@ -24,7 +24,7 @@ installed, just do the following::
 
     $ git clone git@github.com:oubiwann/django-riak-engine.git
     $ cd django-riak-engine
-    $ sudo python setup.py install
+    $ make install
 
 
 Easy Install

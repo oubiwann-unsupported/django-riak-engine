@@ -11,7 +11,11 @@ check: build
 install: check
 	sudo $(PYTHON_BINARY) setup.py install
 
-push: check
+push: clean check
+	git push
+
+commit-push: clean check
+	git commit -v -a
 	git push
 
 register:
