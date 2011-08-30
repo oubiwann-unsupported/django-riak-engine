@@ -1,4 +1,4 @@
-library = "django_riak_engine"
+library_name = "django_riak_engine"
 name = "django-riak-engine"
 author = "Duncan McGreggor"
 author_email = "duncan@bluelibris.com"
