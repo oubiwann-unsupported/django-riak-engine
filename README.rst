@@ -1,11 +1,57 @@
-Please note: this is a *development* README! None of this works yet. When we're
-done, this is what you will do to use this product :-)
+~~~~~~~~~~~~~~~~~~
+django-riak-engine
+~~~~~~~~~~~~~~~~~~
 
-Also note: this was taken from the MongoDB how-to blog post by Chris Umbel (see
-http://www.chrisumbel.com/article/django_python_mongodb_engine_mongo).
+.. contents::
+   :depth: 1
+
+Please note: this is a *development* README! None of this works yet. When we're
+done, this is what you will read to learn about and use this product :-)
+
+
+
+
+============
+Introduction
+============
+
+About Riak
+----------
+
+Riak is a nosql database solution, built with Erlang and designed to duplicate
+the functionality of Amazon's Dynamo.
+
+Riak has a pluggable backend for its core shard-partitioned storage, with the
+default storage backend being Bitcask. Riak also has
+built-in MapReduce with native support for both JavaScript (using the
+SpiderMonkey runtime) and Erlang, while supporting a variety of additional
+language drivers, including Python.
+
+For a comparison of Riak with other nosql solutions, visit this page:
+
+ * http://wiki.basho.com/Riak-Comparisons.html
+
+For a general nosql comparison, read this blog post:
+
+ * http://kkovacs.eu/cassandra-vs-mongodb-vs-couchdb-vs-redis
+
+About django-riak-engine
+------------------------
+
+In order to be used in Django-nonrel applications, this project is cenetered
+upon creating the necessary database adaptors for Django.
+
+
+
+
+============
+Installation
+============
 
 Dependencies
-============
+------------
+
+django_riak_engine has the following dependencies:
 
  * Python
  * Riak
@@ -14,8 +60,59 @@ Dependencies
  * Django toolbox
  * Django Riak engine
 
-Setup
+
+Development
+-----------
+
+If you want to assist with developement of django_riak_engine or use the latest
+code we're working on, you can install from the sources. Once you have git
+installed, just do the following::
+
+    $ git clone git@github.com:oubiwann/django-riak-engine.git
+    $ cd django-riak-engine
+    $ sudo python setup.py install
+
+
+Easy Install
+------------
+
+You can use the setuptools easy_install script to get django_riak_engine on
+your system::
+
+    $ sudo easy_install django-riak-engine
+
+
+Manual Download
+---------------
+
+You can manually download the source tarball from the Python Package Index by
+visiting the following URL:
+
+    http://pypi.python.org/pypi/django-riak-engine
+
+You'll need to untar and gunzip the source, cd into the source directory, and
+then you can do the usual::
+
+    $ sudo python setup.py install
+
+
+Checking the Source
+-------------------
+
+Once installed, you can test the source code by executing this in your local
+source tree::
+
+    $ make check
+
+That will run the test suite and report on ther successes and/or failures.
+
+
 =====
+Usage
+=====
+
+Setting up Django
+-----------------
 
 Let's get started with a demo app::
 
@@ -37,8 +134,9 @@ Configure the app to talk to a specific database in settings.py::
         },
     }
 
+
 Using the Database
-==================
+------------------
 
 Let's created a model::
 
@@ -68,5 +166,41 @@ Now let's use the Django Riak API::
 To get a list of all articles::
 
     articles = Article.objects.all()
+
+
+
+
+====
+TODO
+====
+
+Implementation
+--------------
+
+Everything.
+
+
+Testing
+-------
+
+All the implementation.
+
+
+Documentation
+-------------
+
+All the implementation.
+
+
+
+
+=======
+Changes
+=======
+
+Version 0.1
+-----------
+
+* Initial release of django_riak_engine.
 
 
