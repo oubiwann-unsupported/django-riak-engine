@@ -41,6 +41,14 @@ About django-riak-engine
 In order to be used in Django-nonrel applications, this project is cenetered
 upon creating the necessary database adaptors for Django.
 
+Community
+---------
+
+There is a development discussion Google group here for public participation of
+anyone interested in coding on the project:
+
+ * http://groups.google.com/group/django-riak-dev
+
 
 
 
