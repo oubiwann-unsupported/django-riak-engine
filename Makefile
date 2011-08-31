@@ -8,8 +8,12 @@ version:
 build:
 	$(PYTHON_BINARY) setup.py build
 
+check: DJANGO_HOME ?= 
 check: build
 	$(PYTHON_BINARY) ./django_riak_engine/testing/runner.py
+#	cd ./examples/django_riak_mapreduce/ && \
+#	PYTHONPATH=$(DJANGO_HOME):../..:$(PYTHONPATH) \
+#	$(PYTHON_BINARY) ./manage.py test
 
 install: check
 	sudo $(PYTHON_BINARY) setup.py install
