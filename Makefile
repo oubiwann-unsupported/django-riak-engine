@@ -1,5 +1,8 @@
 PYTHON_BINARY ?= python2.5
 VERSION = $(shell $(PYTHON_BINARY) -c \
+PYTHONPATH = $$PYTHONPATH
+
+version:
 	"from django_riak_engine.meta import version; print version;")
 
 build:
@@ -32,3 +35,19 @@ release:
 clean:
 	rm -rf build sdist dist *.egg *.egg-info
 	find . -name *.pyc -exec rm {} \;
+
+# project-app usage:
+#
+# make START=~/lab PROJECT=django_riak_example APP=riak_app project-app
+project-app: START ?= .
+project-app: PROJECT ?= test-project
+project-app: APP ?= test-app
+project-app: DJANGO_HOME ?= /usr/local/google_appengine/lib/django_1_2
+project-app:
+	cd $(START) && PYTHONPATH=$(DJANGO_HOME):$(PYTHONPATH) \
+	python2.5 $(DJANGO_HOME)/django/bin/django-admin.py \
+	startproject $(PROJECT) && \
+	cd $(PROJECT) && \
+	PYTHONPATH=$(DJANGO_HOME):$(PYTHONPATH) \
+	python2.5 $(DJANGO_HOME)/django/bin/django-admin.py \
+	startapp $(APP)
