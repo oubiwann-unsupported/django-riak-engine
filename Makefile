@@ -55,3 +55,8 @@ project-app:
 	PYTHONPATH=$(DJANGO_HOME):$(PYTHONPATH) \
 	python2.5 $(DJANGO_HOME)/django/bin/django-admin.py \
 	startapp $(APP)
+
+load-example-data:
+	cd ./examples/django_riak_mapreduce/riak_mapreduce && \
+	PYTHONPATH=.:$(PYTHONPATH) \
+	python2.6 -c "import tools; tools.import_csv_google_data();"
