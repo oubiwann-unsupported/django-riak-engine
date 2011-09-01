@@ -1,3 +1,4 @@
+from django_riak_engine import connection
 from django_riak_engine import client
 
 from djangotoolbox.db.base import NonrelDatabaseFeatures, \
@@ -29,6 +30,7 @@ class DatabaseIntrospection(NonrelDatabaseIntrospection):
 
 
 class DatabaseWrapper(NonrelDatabaseWrapper):
+
     def __init__(self, *args, **kwds):
         super(DatabaseWrapper, self).__init__(*args, **kwds)
         self.features = DatabaseFeatures(self)
@@ -38,6 +40,17 @@ class DatabaseWrapper(NonrelDatabaseWrapper):
         self.validation = DatabaseValidation(self)
         self.introspection = DatabaseIntrospection(self)
         # TODO: connect to your DB here (if needed)
-        self.db_connection = connect(
-            self.settings_dict['HOST'], self.settings_dict['PORT'],
-            self.settings_dict['USER'], self.settings_dict['PASSWORD'])
+        self.db_connection = None
+
+    def connect(self):
+        if not self.db_connection:
+            host = self.settings_dict.get('HOST') or const.DEFAULT_HOST
+            # XXX need to figure out how we're going to deal with HTTP vs. PB
+            port = self.settings_dict.get('PORT') or const.DEFAULT_HTTP_PORT
+            user = self.settings_dict.get('USER')
+            password = self.settings_dict.get('PASSWORD')
+            self.db_connection = connection.RiakConnection(
+                host, port, user, password)
+        if not self.db_connection.is_connected():
+            self.db_connection.connect()
+        return self.db_connection
