@@ -85,9 +85,9 @@ Easy Install
 ------------
 
 You can use the setuptools easy_install script to get django_riak_engine on
-your system::
+your system (add ``sudo`` at beginning if not inside virtualenv)::
 
-    $ sudo easy_install django-riak-engine
+    $ easy_install django-riak-engine
 
 
 Manual Download

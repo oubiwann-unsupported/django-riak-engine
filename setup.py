@@ -37,10 +37,9 @@ dist.setup(
         filename="README.rst"),
 
     platforms=['any'],
-    install_requires=['pyriak', 'django>=1.2', 'djangotoolbox'],
+    install_requires=['riak', 'django>=1.2', 'djangotoolbox'],
     packages=dist.find_packages(meta.library_name),
 
     classifiers=CLASSIFIERS,
     test_suite='django_riak_engine.tests',
     )
-
