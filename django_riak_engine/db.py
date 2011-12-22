@@ -41,12 +41,13 @@ class DatabaseWrapper(NonrelDatabaseWrapper):
         self.introspection = DatabaseIntrospection(self)
         # TODO: connect to your DB here (if needed)
         self.db_connection = None
+        self.connect()
 
     def connect(self):
         if not self.db_connection:
-            host = self.settings_dict.get('HOST') or const.DEFAULT_HOST
+            host = self.settings_dict.get('HOST')  # or const.DEFAULT_HOST
             # XXX need to figure out how we're going to deal with HTTP vs. PB
-            port = self.settings_dict.get('PORT') or const.DEFAULT_HTTP_PORT
+            port = self.settings_dict.get('PORT')  # or const.DEFAULT_HTTP_PORT
             user = self.settings_dict.get('USER')
             password = self.settings_dict.get('PASSWORD')
             self.db_connection = connection.RiakConnection(
